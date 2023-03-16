@@ -1,0 +1,73 @@
+[
+  {
+    "activityNumber": "1",
+    "topic": "test",
+    "errandType": "standard",
+    "status": "avbruten",
+    "supervisor": "bo ek",
+    "supervisingGroup": "bo eks team",
+    "tags": [
+      {
+        "name": "SEBRA",
+        "color": "red"
+      },
+      {
+        "name": "GÄVLE",
+        "color": "orange"
+      }
+    ],
+    "date": "2019-07-04T13:33:03.969Z"
+  },
+  {
+    "activityNumber": "2",
+    "topic": "test",
+    "errandType": "standard",
+    "status": "avbruten",
+    "supervisor": "bo ek",
+    "supervisingGroup": "bo eks team",
+    "tags": [
+      {
+        "name": "SEBRA",
+        "color": "red"
+      }
+    ],
+    "date": "2023-03-15T13:33:03.969Z"
+  },
+  {
+    "activityNumber": "3",
+    "topic": "test",
+    "errandType": "standard",
+    "status": "avbruten",
+    "supervisor": "bo ek",
+    "supervisingGroup": "bo eks team",
+    "tags": [],
+    "date": "2019-07-04T13:33:03.969Z"
+  },
+  {
+    "activityNumber": "4",
+    "topic": "test",
+    "errandType": "standard",
+    "status": "klart",
+    "supervisor": "bo ek",
+    "supervisingGroup": "bo eks team",
+    "tags": [
+      {
+        "name": "SEBRA",
+        "color": "red"
+      },
+      {
+        "name": "GÄVLE",
+        "color": "orange"
+      },
+      {
+        "name": "SEBRA",
+        "color": "red"
+      },
+      {
+        "name": "GÄVLE",
+        "color": "orange"
+      }
+    ],
+    "date": "2019-07-04T13:33:03.969Z"
+  }
+]

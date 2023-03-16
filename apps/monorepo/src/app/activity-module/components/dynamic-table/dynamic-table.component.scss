@@ -1,0 +1,11 @@
+.activity-table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.activity-table-cell {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
+}
