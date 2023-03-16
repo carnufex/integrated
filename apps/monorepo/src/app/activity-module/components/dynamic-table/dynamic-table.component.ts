@@ -1,7 +1,13 @@
 import { NgForOf, NgIf } from '@angular/common';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { Errand } from '../../models/errand';
@@ -9,6 +15,7 @@ import { Action } from '../../models/action';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Activity } from '../../models/activity';
+import { Column } from '../../models/column';
 
 @Component({
   standalone: true,
@@ -20,13 +27,14 @@ import { Activity } from '../../models/activity';
     MatTableModule,
     MatChipsModule,
     MatFormFieldModule,
+    MatSortModule,
   ],
   selector: 'dynamic-table',
   templateUrl: './dynamic-table.component.html',
   styleUrls: ['./dynamic-table.component.scss'],
 })
-export class DynamicTableComponent implements OnInit {
-  @Input() columns!: Errand[];
+export class DynamicTableComponent implements OnInit, AfterViewInit {
+  @Input() columns!: Column[];
   @Input() actions!: Action[];
   @Input() set data(value: unknown[]) {
     this.dataSource = new MatTableDataSource<unknown>(value);
@@ -40,6 +48,7 @@ export class DynamicTableComponent implements OnInit {
   onMatSortChange() {
     this.dataSource.sort = this.sort;
   }
+
   ngOnInit(): void {
     if (this.actions && this.actions.length > 0) {
       // Add the column actions
@@ -49,6 +58,10 @@ export class DynamicTableComponent implements OnInit {
       ];
     }
     this.displayedColumns = this.columns.map((col) => col.name);
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 
   action(item: Action, element: Activity) {
