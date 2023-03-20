@@ -1,4 +1,4 @@
-import { NgForOf, NgIf } from '@angular/common';
+import { JsonPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   Component,
   Input,
@@ -28,6 +28,8 @@ import { Column } from '../../models/column';
     MatChipsModule,
     MatFormFieldModule,
     MatSortModule,
+    NgTemplateOutlet,
+    JsonPipe,
   ],
   selector: 'dynamic-table',
   templateUrl: './dynamic-table.component.html',
@@ -47,6 +49,10 @@ export class DynamicTableComponent implements OnInit, AfterViewInit {
 
   onMatSortChange() {
     this.dataSource.sort = this.sort;
+  }
+
+  log(val: any) {
+    console.log(val);
   }
 
   ngOnInit(): void {
