@@ -103,7 +103,7 @@ export class FilterFormComponent implements OnInit {
       );
     }
 
-    if (this.selectedStatus.length > 0) {
+    if (this.selectedStatus && this.selectedStatus.length > 0) {
       this.filteredActivites = this.filteredActivites.filter((item) => {
         return this.selectedStatus.some(
           (selectedOption) =>

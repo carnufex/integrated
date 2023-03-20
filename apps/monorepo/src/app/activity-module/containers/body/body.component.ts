@@ -3,7 +3,6 @@ import { FilterFormComponent } from '../../components/filter-form/filter-form.co
 import { DynamicTableComponent } from '../../components/dynamic-table/dynamic-table.component';
 import { Activity } from '../../models/activity';
 import { Action } from '../../models/action';
-import { Errand } from '../../models/errand';
 import { Column } from '../../models/column';
 
 @Component({
@@ -27,14 +26,14 @@ export class TableBodyComponent {
   dataSource!: Activity[];
 
   displayedColumns: Column[] = [
-    { name: 'activityNumber', display: 'Aktivitetsnummer', sortable: true },
-    { name: 'topic', display: 'Rubrik' },
-    { name: 'errandType', display: 'Ärendetyp' },
+    { name: 'activityNumber', display: 'Aktivitetsnummer' },
+    { name: 'topic', display: 'Rubrik', sortable: true },
+    { name: 'errandType', display: 'Ärendetyp', sortable: true },
     { name: 'status', display: 'Status' },
-    { name: 'supervisor', display: 'Ärendeansvarig' },
-    { name: 'supervisingGroup', display: 'Ansvarig Grupp' },
+    { name: 'supervisor', display: 'Ärendeansvarig', sortable: true },
+    { name: 'supervisingGroup', display: 'Ansvarig Grupp', sortable: true },
     { name: 'tags', display: 'Taggar' },
-    { name: 'date', display: 'Skapat' },
+    { name: 'date', display: 'Skapat', sortable: true },
   ];
 
   actions: Action[] = [
