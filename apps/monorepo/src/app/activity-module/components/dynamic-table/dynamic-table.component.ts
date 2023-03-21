@@ -64,8 +64,10 @@ export class DynamicTableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  action(item: Action, element: Activity) {
+  action(item: Action, element: any) {
     console.log(item);
-    item.action(element);
+    item.action(() => {
+      return element;
+    });
   }
 }

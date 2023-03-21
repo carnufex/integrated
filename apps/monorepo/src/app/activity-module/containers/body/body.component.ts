@@ -54,8 +54,9 @@ export class TableBodyComponent {
     },
   ];
 
-  parentFunction1(activity: Activity) {
-    console.log('parent func 1', activity);
+  parentFunction1(callback: any) {
+    const x = callback();
+    console.log(x);
   }
 
   parentFunction2() {
