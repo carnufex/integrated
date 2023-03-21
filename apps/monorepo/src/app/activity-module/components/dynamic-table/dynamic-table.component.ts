@@ -1,4 +1,4 @@
-import { NgForOf, NgIf } from '@angular/common';
+import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   Component,
   Input,
@@ -10,7 +10,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
-import { Errand } from '../../models/errand';
 import { Action } from '../../models/action';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,6 +27,7 @@ import { Column } from '../../models/column';
     MatChipsModule,
     MatFormFieldModule,
     MatSortModule,
+    NgTemplateOutlet,
   ],
   selector: 'dynamic-table',
   templateUrl: './dynamic-table.component.html',
