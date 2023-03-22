@@ -1,0 +1,18 @@
+$width: 128px;
+
+:host {
+  position: absolute;
+  width: $width;
+  right: -$width; // to render it on the right side, use "right: -$width" instead
+}
+
+// Make the toggle group appear on top of datePicker window instead of on side,
+// TODO: the [vertical]="true" flag on the toggle group needs to change as well...
+@media (max-width: 400px) {
+  :host {
+    position: relative;
+    left: 0;
+    display: flex;
+    width: 100%;
+  }
+}

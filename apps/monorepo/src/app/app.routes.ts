@@ -26,6 +26,14 @@ export const appRoutes: Route[] = [
       ),
     providers: [importProvidersFrom(HttpClientModule), ActivityService],
   },
+  {
+    path: 'date',
+    loadComponent: () =>
+      import('./date-picker/date-picker.component').then(
+        (x) => x.DatePickerComponent
+      ),
+    providers: [importProvidersFrom(HttpClientModule), ActivityService],
+  },
 
   {
     path: '**',

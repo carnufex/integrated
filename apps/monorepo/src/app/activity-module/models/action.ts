@@ -1,5 +1,5 @@
 export interface Action {
   name: string;
   icon: string;
-  action: (callback: (result: any) => any) => void;
+  action: (callback: (result: unknown) => unknown) => void;
 }

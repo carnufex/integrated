@@ -40,7 +40,7 @@ export class TableBodyComponent {
     {
       name: 'Delete',
       icon: 'delete',
-      action: this.parentFunction1,
+      action: this.parentFunction1.bind(this),
     },
     {
       name: 'Edit',

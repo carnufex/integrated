@@ -1,0 +1,15 @@
+<mat-card class="mat-elevation-z3">
+  <mat-button-toggle-group
+    #presetRanges="matButtonToggleGroup"
+    [vertical]="true"
+  >
+    <mat-button-toggle
+      *ngFor="let item of customPresets"
+      mat-button
+      color="primary"
+      (click)="selectRange(item)"
+    >
+      {{ item }}
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</mat-card>

@@ -13,7 +13,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { Action } from '../../models/action';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Activity } from '../../models/activity';
 import { Column } from '../../models/column';
 
 @Component({
@@ -64,7 +63,7 @@ export class DynamicTableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  action(item: Action, element: any) {
+  action(item: Action, element: unknown) {
     console.log(item);
     item.action(() => {
       return element;

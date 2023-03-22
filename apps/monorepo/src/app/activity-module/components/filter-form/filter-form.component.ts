@@ -1,11 +1,6 @@
 import { NgForOf, NgIf } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -19,6 +14,8 @@ import { Activity } from '../../models/activity';
 import { ActivityService } from '../../service/activity.service';
 import { MatNativeDateModule } from '@angular/material/core';
 import { Errand } from '../../models/errand';
+
+import { DatePickerComponent } from '../../../date-picker/date-picker.component';
 
 @Component({
   standalone: true,
@@ -35,6 +32,7 @@ import { Errand } from '../../models/errand';
     ReactiveFormsModule,
     NgIf,
     NgForOf,
+    DatePickerComponent,
   ],
   selector: 'integrated-filter-form',
   templateUrl: './filter-form.component.html',
@@ -58,10 +56,7 @@ export class FilterFormComponent implements OnInit {
     { name: 'cancelled', display: 'Ledsagning' },
   ];
 
-  range = new FormGroup({
-    start: new FormControl<Date | null>(null),
-    end: new FormControl<Date | null>(null),
-  });
+  range!: FormGroup;
 
   constructor(private activityService: ActivityService) {
     this.filteredActivites = this.activities;
@@ -72,6 +67,11 @@ export class FilterFormComponent implements OnInit {
       this.activities = activities;
       this.update.emit(activities);
     });
+  }
+
+  onUpdate(range: FormGroup): void {
+    this.range = range;
+    this.applyFilters();
   }
 
   applyFilters() {
@@ -85,15 +85,17 @@ export class FilterFormComponent implements OnInit {
       );
     }
 
-    if (this.range.value.start && this.range.value.end) {
-      const start = new Date(this.range.value.start).getTime();
-      const end = new Date(this.range.value.end).getTime();
-      let time;
+    if (this.range) {
+      if (this.range.value.start && this.range.value.end) {
+        const start = new Date(this.range.value.start).getTime();
+        const end = new Date(this.range.value.end).getTime();
+        let time;
 
-      this.filteredActivites = this.filteredActivites.filter((item) => {
-        time = new Date(item.date).getTime();
-        return time >= start && time <= end;
-      });
+        this.filteredActivites = this.filteredActivites.filter((item) => {
+          time = new Date(item.date).getTime();
+          return time >= start && time <= end;
+        });
+      }
     }
 
     if (this.selectedErrand) {
