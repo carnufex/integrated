@@ -32,8 +32,6 @@ export class DatePickerComponent {
 
   readonly customHeaderComponent = CustomHeaderComponent;
 
-  isTouchUIActivated = false;
-
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),

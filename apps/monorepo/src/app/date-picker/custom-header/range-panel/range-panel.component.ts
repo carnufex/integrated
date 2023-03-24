@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, HostBinding } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatDateRangePicker } from '@angular/material/datepicker';
@@ -6,17 +6,17 @@ import { DateAdapter } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 const customPresets = [
-  'today',
-  'last 7 days',
-  'this week',
-  'last week',
-  'this month',
-  'last month',
-  'this year',
-  'last year',
+  'Idag',
+  'Senaste 7 dagarna',
+  'Den här veckan',
+  'Förra veckan',
+  'Den här månaden',
+  'Förra månaden',
+  'Det här året',
+  'Förra året',
 ] as const; // convert to readonly tuple of string literals
 
-// equivalent to "today" | "last 7 days" | ... | "last year"
+// equivalent to "today" | "Förra 7 dagarna" | ... | "Förra året"
 type CustomPreset = (typeof customPresets)[number];
 
 @Component({
@@ -48,41 +48,40 @@ export class RangePanelComponent<D> {
     const year = this.dateAdapter.getYear(today);
 
     switch (rangeName) {
-      case 'today':
+      case 'Idag':
         return [today, today];
-      case 'last 7 days': {
+      case 'Senaste 7 dagarna': {
         const start = this.dateAdapter.addCalendarDays(today, -6);
         return [start, today];
       }
-      case 'this week': {
+      case 'Den här veckan': {
         return this.calculateWeek(today);
       }
-      case 'this month': {
+      case 'Den här månaden': {
         return this.calculateMonth(today);
       }
-      case 'this year': {
+      case 'Det här året': {
         const start = this.dateAdapter.createDate(year, 0, 1);
         const end = this.dateAdapter.createDate(year, 11, 31);
         return [start, end];
       }
-      case 'last week': {
+      case 'Förra veckan': {
         const thisDayLastWeek = this.dateAdapter.addCalendarDays(today, -7);
         return this.calculateWeek(thisDayLastWeek);
       }
-      case 'last month': {
+      case 'Förra månaden': {
         const thisDayLastMonth = this.dateAdapter.addCalendarMonths(today, -1);
         return this.calculateMonth(thisDayLastMonth);
       }
-      case 'last year': {
+      case 'Förra året': {
         const start = this.dateAdapter.createDate(year - 1, 0, 1);
         const end = this.dateAdapter.createDate(year - 1, 11, 31);
         return [start, end];
       }
       default:
-        // exhaustiveness check;
-        // rangeName has type never, if every possible value is handled in the switch cases.
-        // Otherwise, the following line will result in compiler error:
-        // "Type 'string' is not assignable to type '[start: D, end: D]'"
+        console.error(
+          'The range is not a custom preset, see calculateDateRange()'
+        );
         return rangeName;
     }
   }

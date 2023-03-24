@@ -1,16 +1,16 @@
 <mat-form-field>
-  <mat-label>Enter a date range</mat-label>
+  <mat-label>Datumintervall</mat-label>
   <mat-date-range-input [rangePicker]="picker" [formGroup]="range">
     <input
       matStartDate
       formControlName="start"
-      placeholder="Start date"
+      placeholder="Start datum"
       (dateChange)="dateChange()"
     />
     <input
       matEndDate
       formControlName="end"
-      placeholder="End date"
+      placeholder="Slut datum"
       (dateChange)="dateChange()"
     />
   </mat-date-range-input>
